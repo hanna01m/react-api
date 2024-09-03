@@ -1,0 +1,52 @@
+.fetch-api {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horisontellt centrera */
+  justify-content: center; /* Vertikalt centrera */
+  min-height: 100vh; /* Fyll hela höjden på viewporten */
+  text-align: center; /* Centrera text i tabellen */
+}
+
+.table-container {
+  max-height: 400px; /* Adjust height as needed */
+  overflow-y: auto;
+  width: 80%; /* Adjust width as needed */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.api-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.api-btn:hover {
+  background-color: #0056b3;
+}
+/* Add this to your App.css or relevant CSS file */
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light grey color for even rows */
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* White color for odd rows */
+}
