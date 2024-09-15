@@ -3,6 +3,11 @@ import Axios from "axios";
 
 function List() {
   const [allData, setAllData] = useState([]);
+  const [showMore, setShowMore] = useState(10);
+
+  const handleShowMore = () => {
+    setShowMore((prevCount) => prevCount + 5);
+  };
 
   useEffect(() => {
     Axios.get("https://polisen.se/api/events").then((response) => {
@@ -16,17 +21,31 @@ function List() {
   }, []);
 
   return (
-    <div className="list-container">
-      {allData.length > 0 ? (
-        allData.map((event) => (
-          <div key={event.id}>
-            <p>Beskrivning: {event.summary}</p>
-          </div>
-        ))
-      ) : (
-        <p>Laddar data...</p>
-      )}
-    </div>
+    <>
+      <div className="page-container">
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Plats</th>
+                <th>Beskrivning</th>
+                <th>Tid</th>
+              </tr>
+            </thead>
+            <tbody>
+              {allData.slice(0, showMore).map((event) => (
+                <tr key={event.id}>
+                  <td>{event.location.name}</td>
+                  <td>{event.summary}</td>
+                  <td>{event.dateTime}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button onClick={handleShowMore}>Visa mer</button>
+        </div>
+      </div>
+    </>
   );
 }
 

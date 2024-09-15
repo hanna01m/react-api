@@ -1,52 +1,46 @@
-.fetch-api {
+.page-container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Horisontellt centrera */
-  justify-content: center; /* Vertikalt centrera */
-  min-height: 100vh; /* Fyll hela höjden på viewporten */
-  text-align: center; /* Centrera text i tabellen */
-}
-
-.table-container {
-  max-height: 400px; /* Adjust height as needed */
-  overflow-y: auto;
-  width: 80%; /* Adjust width as needed */
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
+  height: 100vh;
+  background-color: aliceblue;
+  padding: 0;
+  margin: 0;
 }
 
 th,
 td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 1rem;
   text-align: left;
+}
+
+.table-container {
+  width: 50%;
+  height: 60%;
+  overflow-y: auto;
+  padding-top: 0;
+  border: 10px solid white;
+  background-color: white;
 }
 
 th {
   background-color: #f2f2f2;
 }
 
-.api-btn {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
+table {
+  max-width: 100%;
+  border-collapse: collapse;
 }
 
-.api-btn:hover {
-  background-color: #0056b3;
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
-/* Add this to your App.css or relevant CSS file */
+
 table tbody tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light grey color for even rows */
+  background-color: #f2f2f2;
 }
 
 table tbody tr:nth-child(odd) {
-  background-color: #ffffff; /* White color for odd rows */
+  background-color: #ffffff;
 }
