@@ -1,0 +1,11 @@
+.map-section {
+  width: 50vw;
+  height: 90vh;
+}
+
+.map-container {
+  max-height: 90vh;
+  border: 10px solid white;
+  padding: 0;
+  background-color: red;
+}

@@ -27,7 +27,7 @@ function List() {
 
   return (
     <>
-      <div className="page-container">
+      <div className="list-section">
         <div className="table-container">
           <table>
             <thead>
@@ -42,24 +42,7 @@ function List() {
                 <tr key={event.id}>
                   <td>{event.location.name}</td>
                   <td>{event.summary}</td>
-                  <td>
-                    {(() => {
-                      const formattedDate = new Date(event.datetime);
-
-                      const date = formattedDate.toLocaleDateString([], {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                      });
-
-                      const time = formattedDate.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      });
-
-                      return `${date} ${time}`;
-                    })()}
-                  </td>
+                  <td>{event.datetime}</td>
                 </tr>
               ))}
             </tbody>
