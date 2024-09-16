@@ -15,7 +15,7 @@ td {
 
 .table-container {
   width: 50%;
-  height: 60%;
+  height: 90vh;
   overflow-y: auto;
   padding-top: 0;
   border: 10px solid white;

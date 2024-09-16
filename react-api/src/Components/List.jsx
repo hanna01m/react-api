@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Axios from "axios";
 
 function List() {
   const [allData, setAllData] = useState([]);
   const [showMore, setShowMore] = useState(10);
+  const scrollEndRef = useRef(null);
 
   const handleShowMore = () => {
     setShowMore((prevCount) => prevCount + 5);
+
+    setTimeout(() => {
+      scrollEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }, 150);
   };
 
   useEffect(() => {
@@ -42,6 +47,7 @@ function List() {
               ))}
             </tbody>
           </table>
+          <div ref={scrollEndRef}></div>
           <button onClick={handleShowMore}>Visa mer</button>
         </div>
       </div>
