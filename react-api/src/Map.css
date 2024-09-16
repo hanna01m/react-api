@@ -1,11 +1,10 @@
 .map-section {
   width: 50vw;
-  height: 100vh;
 }
 
 .leaflet-container {
-  height: 90vh;
-  width: 100vw;
+  height: 80vh;
+  border: 1rem solid white;
 }
 
 .map-container {

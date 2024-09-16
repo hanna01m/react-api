@@ -3,7 +3,7 @@ import Axios from "axios";
 
 function List() {
   const [allData, setAllData] = useState([]);
-  const [showMore, setShowMore] = useState(5);
+  const [showMore, setShowMore] = useState(10);
   const scrollEndRef = useRef(null);
 
   const handleShowMore = () => {
@@ -32,9 +32,9 @@ function List() {
           <table>
             <thead>
               <tr>
-                <th>Plats</th>
-                <th>Beskrivning</th>
-                <th>Tid</th>
+                <th>PLATS</th>
+                <th>BESKRIVNING</th>
+                <th>TID</th>
               </tr>
             </thead>
             <tbody>
@@ -48,7 +48,9 @@ function List() {
             </tbody>
           </table>
           <div ref={scrollEndRef}></div>
-          <button onClick={handleShowMore}>Visa mer</button>
+          <button onClick={handleShowMore} className="show-more-btn">
+            Visa mer
+          </button>
         </div>
       </div>
     </>
