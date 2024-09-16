@@ -3,7 +3,7 @@ import Axios from "axios";
 
 function List() {
   const [allData, setAllData] = useState([]);
-  const [showMore, setShowMore] = useState(10);
+  const [showMore, setShowMore] = useState(5);
   const scrollEndRef = useRef(null);
 
   const handleShowMore = () => {
@@ -42,7 +42,24 @@ function List() {
                 <tr key={event.id}>
                   <td>{event.location.name}</td>
                   <td>{event.summary}</td>
-                  <td>{event.dateTime}</td>
+                  <td>
+                    {(() => {
+                      const formattedDate = new Date(event.datetime);
+
+                      const date = formattedDate.toLocaleDateString([], {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                      });
+
+                      const time = formattedDate.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      });
+
+                      return `${date} ${time}`;
+                    })()}
+                  </td>
                 </tr>
               ))}
             </tbody>
