@@ -1,13 +1,48 @@
 .App {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 body {
   padding: 0;
   margin: 0;
+  height: 100vh;
+}
+
+@media only screen and (max-width: 700px) {
+  .App {
+    justify-content: center;
+  }
+  .table-container {
+    margin-top: 1rem;
+    border: 1rem solid white;
+    height: 50vh;
+    overflow-y: auto;
+  }
+  .list-section {
+    width: 90vw;
+    margin-bottom: 0;
+  }
+
+  .leaflet-container {
+    height: 50vh;
+  }
+  .map-section {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title {
+    text-align: center;
+  }
+
+  th,
+  td {
+    font-size: 0.8rem;
+  }
 }
