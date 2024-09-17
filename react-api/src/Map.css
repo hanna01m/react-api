@@ -3,12 +3,11 @@
 }
 
 .leaflet-container {
-  height: 80vh;
+  height: 70vh;
   border: 1rem solid white;
 }
 
 .map-container {
-  max-height: 90vh;
   border: 10px solid white;
   padding: 0;
   background-color: red;

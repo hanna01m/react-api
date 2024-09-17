@@ -1,17 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import Axios from "axios";
-
-const dateTimeFormat = (datetime) => {
-  const date = new Date(datetime);
-
-  const dateFormat = { year: "numeric", month: "2-digit", day: "2-digit" };
-  const timeFormat = { hour: "2-digit", minute: "2-digit", hour12: false };
-
-  const formattedDate = date.toLocaleDateString("sv-SE", dateFormat); // YYYY-MM-DD
-  const formattedTime = date.toLocaleTimeString("sv-SE", timeFormat);
-
-  return `${formattedDate} ${formattedTime}`;
-};
+import dateTimeFormat from "../utils/dateTimeFormat";
+import { apiUrl } from "../utils/api";
 
 function List() {
   const [allData, setAllData] = useState([]);
@@ -30,16 +19,12 @@ function List() {
   };
 
   useEffect(() => {
-    Axios.get("https://polisen.se/api/events", {
-      timeout: 5000,
-    }).then((response) => {
-      if (response.data.length > 0) {
-        setAllData(response.data);
-        console.log(response.data);
-      } else {
-        console.log("Ingen data hittades");
-      }
-    });
+    const fetchData = async () => {
+      const reportsData = await apiUrl();
+      setAllData(reportsData);
+    };
+
+    fetchData();
   }, []);
 
   return (
@@ -69,6 +54,9 @@ function List() {
             Visa mer
           </button>
         </div>
+        <p className="search-link">
+          För detaljerad sökning klicka <a href="/search">här</a>
+        </p>
       </div>
     </>
   );

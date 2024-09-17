@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import "../Search.css";
+import dateTimeFormat from "../utils/dateTimeFormat";
+import { apiUrl } from "../utils/api";
 
 function Search() {
   const [allData, setAllData] = useState([]);
@@ -13,58 +15,58 @@ function Search() {
     const inputSearch = inputValue.toLowerCase();
 
     return (
-      event.summary.toLowerCase().includes(inputValue) ||
-      event.location.name.toLowerCase().includes(inputValue) ||
-      event.datetime.toLowerCase().includes(inputValue)
+      event.summary.toLowerCase().includes(inputSearch) ||
+      event.location.name.toLowerCase().includes(inputSearch) ||
+      event.datetime.toLowerCase().includes(inputSearch)
     );
   });
 
   useEffect(() => {
-    Axios.get("https://polisen.se/api/events", {
-      timeout: 5000,
-    }).then((response) => {
-      if (response.data.length > 0) {
-        setAllData(response.data);
-        // console.log(response.data);
-      } else {
-        console.log("Ingen data hittades");
-      }
-    });
+    const fetchData = async () => {
+      const reportsData = await apiUrl();
+      setAllData(reportsData);
+    };
+
+    fetchData();
   }, []);
 
   return (
-    <div className="search">
-      <h1>Sökfält</h1>
+    <div className="search-page">
       <form>
-        {" "}
+        <h1>Detaljerad sökning</h1>{" "}
         <input
           type="text"
           value={inputValue}
           onChange={handleInputValue}
-          placeholder="...Plats, tid, beskrivning"
+          placeholder="...plats, tid, beskrivning..."
         />
-        <button type="submit" className="src-btn">
-          Sök
-        </button>
       </form>
       <div className="search-result">
         {inputValue && searchFilter.length > 0 ? (
-          <ul>
-            {searchFilter.map((event) => (
-              <li key={event.id}>
-                <p>
-                  <strong>Plats: </strong>
-                  {event.location.name}{" "}
-                </p>
-                <p>
-                  <strong>Beskrivning: </strong>
-                  {event.summary}{" "}
-                </p>
-              </li>
-            ))}
-          </ul>
+          <table className="search-container">
+            <thead>
+              <tr>
+                <th>PLATS</th>
+                <th>BESKRIVNING</th>
+                <th>TID</th>
+                <th>KATEGORI</th>
+                <th>URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {searchFilter.map((event) => (
+                <tr key={event.id}>
+                  <td>{event.location.name} </td>
+                  <td>{event.summary} </td>
+                  <td>{dateTimeFormat(event.datetime)}</td>{" "}
+                  <td>{event.type} </td>
+                  <td>{event.url} </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : inputValue ? (
-          <p>Inga sökresultat hittades</p>
+          <p className="no-result">Inga sökresultat hittades</p>
         ) : null}
       </div>
     </div>

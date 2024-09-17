@@ -8,12 +8,30 @@ td {
   font-weight: 500;
 }
 
+p {
+  text-align: left;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: rgba(89, 88, 88, 0.684);
+  margin-left: 1rem;
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(89, 88, 88, 0.684);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .list-section {
   width: 50vw;
 }
 
 .table-container {
-  height: 80vh;
+  height: 70vh;
   overflow-y: auto;
   padding-top: 0;
   border: 1rem solid white;
@@ -50,11 +68,11 @@ table tbody tr:nth-child(odd) {
 
 .show-more-btn {
   width: 100%;
+  align-items: center;
   background: #fffffffa;
   border: 1px solid rgb(192, 190, 190);
   font-family: "Open Sans", sans-serif;
 }
 .show-more-btn:hover {
-  width: 100%;
   background: #f2f2f2;
 }
