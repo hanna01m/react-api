@@ -3,6 +3,11 @@ import Axios from "axios";
 
 function Search() {
   const [allData, setAllData] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
+  function handleInputValue(event) {
+    setInputValue(event.target.value);
+  }
 
   useEffect(() => {
     Axios.get("https://polisen.se/api/events", {
@@ -21,8 +26,15 @@ function Search() {
       <h1>Sökfält</h1>
       <form>
         {" "}
-        <input type="text"></input>
-        <button className="src-btn">Sök</button>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInputValue}
+          placeholder="...Plats, tid, beskrivning"
+        />
+        <button type="submit" className="src-btn">
+          Sök
+        </button>
       </form>
       <div className="search-result">
         <ul>
