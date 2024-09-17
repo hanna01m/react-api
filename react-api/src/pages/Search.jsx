@@ -10,12 +10,12 @@ function Search() {
   }
 
   const searchFilter = allData.filter((event) => {
-    const inputSearch = inputValue;
+    const inputSearch = inputValue.toLowerCase();
 
     return (
-      event.summary.includes(inputValue) ||
-      event.location.name.includes(inputValue) ||
-      event.datetime.includes(inputValue)
+      event.summary.toLowerCase().includes(inputValue) ||
+      event.location.name.toLowerCase().includes(inputValue) ||
+      event.datetime.toLowerCase().includes(inputValue)
     );
   });
 
@@ -48,22 +48,24 @@ function Search() {
         </button>
       </form>
       <div className="search-result">
-        ) : (
-        <ul>
-          {searchFilter.map((event) => (
-            <li key={event.id}>
-              <p>
-                <strong>Plats: </strong>
-                {event.location.name}{" "}
-              </p>
-              <p>
-                <strong>Beskrivning: </strong>
-                {event.summary}{" "}
-              </p>
-            </li>
-          ))}
-        </ul>
-        )
+        {inputValue && searchFilter.length > 0 ? (
+          <ul>
+            {searchFilter.map((event) => (
+              <li key={event.id}>
+                <p>
+                  <strong>Plats: </strong>
+                  {event.location.name}{" "}
+                </p>
+                <p>
+                  <strong>Beskrivning: </strong>
+                  {event.summary}{" "}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : inputValue ? (
+          <p>Inga sökresultat hittades</p>
+        ) : null}
       </div>
     </div>
   );
