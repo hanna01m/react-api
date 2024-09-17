@@ -9,18 +9,29 @@ function Search() {
     setInputValue(event.target.value);
   }
 
+  const searchFilter = allData.filter((event) => {
+    const inputSearch = inputValue;
+
+    return (
+      event.summary.includes(inputValue) ||
+      event.location.name.includes(inputValue) ||
+      event.datetime.includes(inputValue)
+    );
+  });
+
   useEffect(() => {
     Axios.get("https://polisen.se/api/events", {
       timeout: 5000,
     }).then((response) => {
       if (response.data.length > 0) {
-        allData(response.data);
-        console.log(response.data);
+        setAllData(response.data);
+        // console.log(response.data);
       } else {
         console.log("Ingen data hittades");
       }
     });
   }, []);
+
   return (
     <div className="search">
       <h1>Sökfält</h1>
@@ -37,8 +48,9 @@ function Search() {
         </button>
       </form>
       <div className="search-result">
+        ) : (
         <ul>
-          {allData.map((event) => (
+          {searchFilter.map((event) => (
             <li key={event.id}>
               <p>
                 <strong>Plats: </strong>
@@ -51,6 +63,7 @@ function Search() {
             </li>
           ))}
         </ul>
+        )
       </div>
     </div>
   );
