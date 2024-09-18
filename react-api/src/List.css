@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
+.list-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 th,
 td {
   padding: 1rem;
@@ -8,7 +14,8 @@ td {
   font-weight: 500;
 }
 
-p {
+/*click here link */
+.search-link {
   text-align: left;
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
@@ -26,16 +33,11 @@ a:hover {
   text-decoration: underline;
 }
 
-.list-section {
-  width: 50vw;
-}
-
 .table-container {
   height: 70vh;
   overflow-y: auto;
-  padding-top: 0;
-  border: 1rem solid white;
-  border-right: none;
+  margin: 1rem;
+  border: 1px solid lightgray;
   background-color: white;
   scroll-behavior: smooth;
 }
@@ -47,6 +49,7 @@ th {
 }
 
 table {
+  width: 90vw;
   border: 1px solid #ddd;
   max-width: 100%;
   border-collapse: collapse;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import dateTimeFormat from "../utils/dateTimeFormat";
 import { apiUrl } from "../utils/api";
+import { Link } from "react-router-dom";
 
 function List() {
   const [allData, setAllData] = useState([]);
@@ -55,7 +56,7 @@ function List() {
           </button>
         </div>
         <p className="search-link">
-          För detaljerad sökning klicka <a href="/search">här</a>
+          För detaljerad sökning klicka <Link to="/search">här</Link>
         </p>
       </div>
     </>

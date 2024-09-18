@@ -50,7 +50,7 @@ function Search() {
                 <th>BESKRIVNING</th>
                 <th>TID</th>
                 <th>KATEGORI</th>
-                <th>URL</th>
+                {/* <th>URL</th> */}
               </tr>
             </thead>
             <tbody>
@@ -60,7 +60,7 @@ function Search() {
                   <td>{event.summary} </td>
                   <td>{dateTimeFormat(event.datetime)}</td>{" "}
                   <td>{event.type} </td>
-                  <td>{event.url} </td>
+                  {/* <td>{event.url} </td> */}
                 </tr>
               ))}
             </tbody>

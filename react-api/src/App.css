@@ -1,6 +1,6 @@
 .App {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   margin: 0;
   height: 100vh;
 }
-
+/* 
 @media only screen and (max-width: 900px) {
   .App {
     justify-content: center;
@@ -39,10 +39,10 @@ body {
 
   .header-title {
     text-align: center;
-  }
+  } */
 
-  th,
+/* th,
   td {
     font-size: 0.8rem;
   }
-}
+} */
