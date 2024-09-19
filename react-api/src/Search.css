@@ -4,12 +4,11 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  margin: 1rem;
 }
 
 .search-result {
   height: 60vh;
-  width: 80%;
+  width: 80vw;
   overflow-y: auto;
   border-right: none;
   background-color: white;
@@ -24,6 +23,7 @@
 form {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
+  /* padding: 1rem; */
   color: rgb(255, 255, 255);
   font-family: "Open Sans", sans-serif;
   width: 80vw;
@@ -43,6 +43,7 @@ input {
 }
 
 h1 {
+  font-size: 1.7rem;
   margin-left: 1rem;
 }
 
